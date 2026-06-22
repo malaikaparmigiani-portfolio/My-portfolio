@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MHFA Storefront — Responsive + MHFA Connect Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B3A5C;
+    --coral:#E2592E;
+    --cream:#FAF6EE;
+    --grey:#6b6b66;
+    --hair:#dfd9c9;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Inter', Arial, Helvetica, sans-serif;
+    background:var(--cream);
+    color:#1c1c1c;
+  }
+  .wrap{max-width:1100px; margin:0 auto; padding:0 32px;}
+
+  /* ===== top nav, Mia-Galloro-style ===== */
+  .topnav{display:flex; align-items:center; justify-content:space-between; padding:22px 32px; max-width:1100px; margin:0 auto;}
+  .topnav .mark{width:34px; height:34px; border-radius:50%; background:var(--navy); color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; letter-spacing:0.5px;}
+  .topnav .links{display:flex; gap:30px; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#1c1c1c; font-weight:600;}
+
+  /* ===== hero / project header ===== */
+  .hero-frame{background:#fff; border:1px solid var(--hair); border-radius:14px; padding:36px 28px; margin:6px 0 36px;}
+  .eyebrow{font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--coral); font-weight:700; margin:0 0 10px;}
+  h1.proj-title{font-family:'Inter Tight', 'Inter', Arial, sans-serif; font-size:42px; font-weight:800; letter-spacing:-0.5px; color:var(--navy); margin:0 0 14px; line-height:1.05;}
+  p.proj-sub{font-size:15px; color:#3a3a3a; max-width:640px; line-height:1.6; margin:0 0 30px;}
+  .meta-row{display:flex; gap:48px; border-top:1px solid var(--hair); padding-top:20px; flex-wrap:wrap;}
+  .meta-row .m{min-width:140px;}
+  .meta-row .m .lbl{font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--grey); font-weight:700; margin-bottom:6px;}
+  .meta-row .m .val{font-size:13px; color:#1c1c1c; font-weight:600; line-height:1.5;}
+  .jumplink{display:inline-block; margin-top:24px; font-size:12px; font-weight:700; letter-spacing:0.5px; color:var(--navy); text-decoration:none; border-bottom:2px solid var(--coral); padding-bottom:2px;}
+
+  /* ===== section structure ===== */
+  .section{padding:46px 0; border-bottom:1px solid var(--hair);}
+  .section:last-of-type{border-bottom:none;}
+  h2.section-title{font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--navy); font-weight:800; margin:0 0 18px; display:flex; align-items:center; gap:10px;}
+  h2.section-title::before{content:""; width:18px; height:3px; background:var(--coral); display:inline-block;}
+  h3.sub-title{font-size:13px; letter-spacing:0.5px; text-transform:uppercase; color:#1c1c1c; font-weight:700; margin:26px 0 10px;}
+  p.body-text{font-size:14px; line-height:1.75; color:#2b2b2b; max-width:700px; margin:0 0 14px;}
+  ul.case-list{margin:0 0 14px; padding-left:18px; max-width:700px;}
+  ul.case-list li{font-size:14px; line-height:1.7; color:#2b2b2b; margin-bottom:8px;}
+  .caption{font-size:11px; color:var(--grey); margin:10px 0 0; font-style:italic;}
+
+  .groups-row{display:flex; gap:20px; flex-wrap:wrap; margin:18px 0 10px;}
+  .group-card{flex:1; min-width:220px; background:#fff; border:1px solid var(--hair); border-radius:10px; padding:18px;}
+  .group-card .gname{font-size:11px; letter-spacing:1px; text-transform:uppercase; font-weight:800; color:var(--coral); margin-bottom:8px;}
+  .group-card p{font-size:13px; line-height:1.6; color:#2b2b2b; margin:0;}
+
+  .insight-row{display:flex; gap:20px; flex-wrap:wrap; margin:18px 0 10px;}
+  .insight{flex:1; min-width:220px;}
+  .insight .itag{font-size:12px; font-weight:800; color:var(--navy); margin-bottom:6px; letter-spacing:0.3px;}
+  .insight p{font-size:13px; line-height:1.65; color:#2b2b2b; margin:0;}
+
+  .persona-row{display:flex; gap:20px; flex-wrap:wrap; margin:18px 0 10px;}
+  .persona{flex:1; min-width:240px; background:#fff; border:1px solid var(--hair); border-radius:10px; padding:20px;}
+  .persona .avatar{width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:14px; margin-bottom:12px;}
+  .persona .pname{font-size:12px; letter-spacing:0.5px; text-transform:uppercase; font-weight:800; color:var(--navy); margin-bottom:8px;}
+  .persona p{font-size:13px; line-height:1.6; color:#2b2b2b; margin:0;}
+
+  /* ===== rich persona cards ===== */
+  .persona-entry{display:flex; gap:36px; margin:34px 0; flex-wrap:wrap; align-items:flex-start;}
+  .persona-intro{flex:0 0 210px; min-width:190px;}
+  .persona-intro .ptype{font-size:11.5px; font-weight:800; letter-spacing:1px; color:var(--coral); text-transform:uppercase; margin-bottom:10px;}
+  .persona-intro h3{font-family:'Inter Tight','Inter',Arial,sans-serif; font-size:22px; font-weight:800; color:var(--navy); margin:0 0 12px; line-height:1.25;}
+  .persona-intro p{font-size:13px; line-height:1.65; color:#2b2b2b; margin:0;}
+  .persona-card{flex:1; min-width:320px; background:#fff; border:1px solid var(--hair); border-radius:14px; padding:26px; display:flex; gap:22px; flex-wrap:wrap;}
+  .persona-card .photo{width:120px; height:150px; border-radius:10px; object-fit:cover; flex-shrink:0;}
+  .persona-card .pcard-main{flex:1; min-width:240px;}
+  .persona-card .pname2{font-size:17px; font-weight:800; color:var(--navy); margin:0 0 2px;}
+  .persona-card .psub{font-size:12px; color:var(--grey); margin:0 0 14px;}
+  .apps-row{display:flex; gap:8px; margin-bottom:16px;}
+  .app-icon{width:28px; height:28px; border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; flex-shrink:0;}
+  .app-icon svg{width:15px; height:15px; display:block;}
+  .persona-card .seg-label{font-size:11px; font-weight:800; letter-spacing:0.5px; text-transform:uppercase; color:var(--navy); margin:0 0 4px;}
+  .persona-card .bio{font-size:13px; line-height:1.6; color:#2b2b2b; margin:0 0 16px;}
+  .persona-quote{font-size:14px; font-style:italic; line-height:1.5; color:var(--navy); border-left:3px solid var(--coral); padding-left:14px; margin:0 0 18px;}
+  .persona-quote b{font-weight:800; color:var(--coral); font-style:normal;}
+  .plists{display:flex; gap:18px; flex-wrap:wrap;}
+  .plist{flex:1; min-width:140px;}
+  .plist .plabel{font-size:11px; font-weight:800; letter-spacing:0.5px; text-transform:uppercase; color:var(--navy); margin-bottom:6px;}
+  .plist ul{margin:0; padding-left:16px;}
+  .plist li{font-size:12.5px; line-height:1.6; color:#2b2b2b; margin-bottom:3px;}
+
+  .hmw-block{margin:14px 0 6px;}
+  .hmw{font-family:'Inter Tight','Inter',Arial,sans-serif; font-size:19px; font-style:italic; font-weight:600; color:var(--navy); margin:0 0 14px; max-width:680px; line-height:1.4;}
+  .hmw span{color:var(--coral);}
+
+  /* ===== sitemap + user-flow diagrams ===== */
+  .diagram-card{background:#fff; border:1px solid var(--hair); border-radius:14px; padding:22px; margin:20px 0 6px; overflow-x:auto;}
+  .diagram-card svg{display:block; min-width:640px; width:100%; height:auto;}
+  .diagram-card text{font-family:'Inter', Arial, Helvetica, sans-serif;}
+  .legend{display:flex; gap:18px; flex-wrap:wrap; margin-top:16px; padding-top:14px; border-top:1px solid var(--hair); font-size:11px; color:var(--grey);}
+  .legend .key{display:flex; align-items:center; gap:6px;}
+  .legend .sw{display:inline-block; width:13px; height:13px; border-radius:3px; flex-shrink:0;}
+
+  /* ===== laying the foundation — lo-fi wireframes ===== */
+  .foundation-tray{background:#f7e9d7; border-radius:14px; padding:34px 24px 28px; margin:18px 0 6px; display:flex; gap:30px; justify-content:center; flex-wrap:wrap;}
+  .wf-unit{width:190px;}
+  .wireframe{background:#fff; border:1px solid #ccc; border-radius:6px; padding:14px 12px; min-height:330px;}
+  .wf-bar{height:16px; background:#e2e2e2; border-radius:4px; margin-bottom:12px;}
+  .wf-bar.sm{height:10px; width:55%;}
+  .wf-circle{width:26px; height:26px; border-radius:50%; background:#d6d6d6; flex-shrink:0;}
+  .wf-circle.lg{width:64px; height:64px; margin:6px auto 8px;}
+  .wf-line{height:8px; background:#e2e2e2; border-radius:3px; margin-bottom:6px;}
+  .wf-line.w60{width:60%;}
+  .wf-line.w40{width:40%;}
+  .wf-row{display:flex; align-items:center; gap:8px; padding:8px 0; border-bottom:1px solid #eee;}
+  .wf-row .wf-col{flex:1;}
+  .wf-pill{width:34px; height:9px; background:#dcdcdc; border-radius:5px; margin-left:auto; flex-shrink:0;}
+  .wf-block{background:#e2e2e2; border-radius:4px;}
+  .wf-img{height:70px; background:#dadada; border-radius:4px; margin-bottom:12px; position:relative; overflow:hidden;}
+  .wf-img::before{content:""; position:absolute; left:14%; bottom:18%; width:40%; height:38%; background:#c9c9c9; border-radius:2px;}
+  .wf-img::after{content:""; position:absolute; right:10%; bottom:18%; width:0; height:0; border-left:14px solid transparent; border-right:14px solid transparent; border-bottom:24px solid #c4c4c4;}
+  .wf-card-row{display:flex; gap:8px; align-items:flex-start; padding:8px 0; border-bottom:1px solid #eee;}
+  .wf-thumb{width:30px; height:30px; border-radius:4px; background:#d6d6d6; flex-shrink:0;}
+  .wf-caption{margin-top:14px; text-align:center;}
+  .wf-caption .name{font-size:11px; letter-spacing:1px; text-transform:uppercase; font-weight:800; color:var(--navy); margin-bottom:8px;}
+  .wf-caption p{font-size:12px; line-height:1.55; color:#2b2b2b; max-width:195px; margin:0 auto;}
+
+  /* ===== device row + bezels (storefront responsive proof) ===== */
+  .device-row{display:flex; gap:28px; align-items:flex-end; flex-wrap:wrap; justify-content:center; padding:8px 0 4px;}
+  .device{text-align:center;}
+  .device-row img{border-radius:8px;}
+
+  /* ===== MHFA Connect phone mockups ===== */
+  .connect-row{display:flex; gap:24px; flex-wrap:wrap; justify-content:center; padding:8px 0 4px;}
+  .phone{background:#1c1c1c; border-radius:26px; padding:10px; width:210px;}
+  .phone .island2{width:50px; height:15px; border-radius:8px; background:#000; margin:0 auto 8px;}
+  .phone .pscreen{background:var(--cream); border-radius:14px; padding:14px 12px; min-height:380px;}
+  .phone .wordmark{font-size:13px; font-weight:bold; color:var(--navy); margin-bottom:14px;}
+  .phone .wordmark span{border-bottom:2px solid var(--coral);}
+  .mode-card{display:flex; align-items:center; gap:10px; background:#fff; border:1px solid #e3ddcf; border-radius:10px; padding:12px; margin-bottom:12px; font-size:12px; color:#222;}
+  .mode-card .ic{width:30px; height:30px; border-radius:50%; background:#e9eff5; display:flex; align-items:center; justify-content:center; font-size:14px; color:var(--navy); flex-shrink:0;}
+  .ring-wrap{display:flex; flex-direction:column; align-items:center; margin:6px 0 14px;}
+  .ring{width:90px; height:90px; border-radius:50%; background:conic-gradient(var(--coral) 0% 70%, #e6e0d2 70% 100%); display:flex; align-items:center; justify-content:center; margin-bottom:8px;}
+  .ring-inner{width:64px; height:64px; border-radius:50%; background:var(--cream); display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:bold; color:var(--navy);}
+  .ring-wrap .cap{font-size:11px; color:#666; text-align:center;}
+
+  /* ===== usability results stat rings ===== */
+  .usability-row{display:flex; gap:30px; flex-wrap:wrap; margin:24px 0 6px;}
+  .stat-ring-wrap{width:170px; display:flex; flex-direction:column; align-items:center; text-align:center;}
+  .stat-ring{width:150px; height:150px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:16px;}
+  .stat-ring-inner{width:112px; height:112px; border-radius:50%; background:var(--cream); display:flex; align-items:center; justify-content:center; gap:5px;}
+  .stat-ring-inner .big{font-family:'Inter Tight','Inter',Arial,sans-serif; font-size:30px; font-weight:800; color:var(--navy);}
+  .stat-ring-inner .of{font-size:13px; font-weight:700; color:var(--navy);}
+  .stat-cap{font-size:12.5px; line-height:1.55; color:#2b2b2b; max-width:165px;}
+  .btn-coral{display:block; width:100%; background:var(--coral); color:#fff; text-align:center; border:none; border-radius:8px; padding:10px; font-size:12px; font-weight:bold; margin-top:4px;}
+  .btn-navy{display:block; width:100%; background:var(--navy); color:#fff; text-align:center; border:none; border-radius:8px; padding:10px; font-size:12px; font-weight:bold; margin-top:10px;}
+  .feed-card{display:flex; gap:8px; align-items:flex-start; background:#fff; border:1px solid #e3ddcf; border-radius:10px; padding:10px; margin-bottom:10px; font-size:11px;}
+  .feed-card .pin{color:var(--coral); font-size:14px;}
+  .cohort-head{font-size:12px; font-weight:bold; color:var(--navy); margin-bottom:10px;}
+  .roster-row{display:flex; align-items:center; gap:8px; padding:7px 0; border-bottom:1px solid #e9e4d6; font-size:12px;}
+  .avatar2{width:24px; height:24px; border-radius:50%; background:var(--navy); color:#fff; font-size:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .status-ok{color:#2f7a4d; margin-left:auto; font-size:13px;}
+  .status-pending{color:#999; margin-left:auto; font-size:11px;}
+
+  /* ===== footer ===== */
+  .site-bottom{background:var(--navy); padding:60px 32px 44px; text-align:center; margin-top:10px;}
+  .site-bottom .wordmark2{color:#fff; font-family:'Inter Tight','Inter',Arial,sans-serif; font-size:26px; font-weight:800; letter-spacing:0.5px; margin-bottom:16px;}
+  .site-bottom .li{width:30px; height:30px; border-radius:50%; background:#fff; color:var(--navy); display:inline-flex; align-items:center; justify-content:center; font-size:13px; font-weight:800;}
+
+  @media (max-width:700px){
+    h1.proj-title{font-size:30px;}
+    .meta-row{gap:24px;}
+    .topnav{padding:18px 20px;}
+    .wrap{padding:0 20px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="mark">MP</div>
+  <div class="links"><span>Work</span><span>About</span><span>Contact</span></div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ============ PROJECT 1: MHFA STOREFRONT ============ -->
+  <header class="hero-frame" id="top">
+    <div class="device-row">
+      <img src="Portfolio_Gemini 3.1 Flash (Nano Banana 2)_2026-06-22_01-32-16.png" alt="MHFA storefront shown on iPhone 16, iPad Pro 13 inch, and desktop" style="max-width:100%; height:auto; display:block; margin:0 auto;">
+    </div>
+
+    <div style="margin-top:34px;">
+      <p class="eyebrow">Case study 02</p>
+      <h1 class="proj-title">MHFA storefront</h1>
+      <p class="proj-sub">A merch storefront for Mental Health First Aid, rebuilt to prove out as a genuinely responsive system — one shared layout reflowing across desktop, iPad Pro, and iPhone 16 — and extended into a concept companion app.</p>
+      <div class="meta-row">
+        <div class="m"><div class="lbl">Project scope</div><div class="val">Responsive web system</div></div>
+        <div class="m"><div class="lbl">Role</div><div class="val">UX/UI design, responsive systems</div></div>
+        <div class="m"><div class="lbl">Platforms</div><div class="val">Desktop, iPad Pro, iPhone 16</div></div>
+      </div>
+      <a class="jumplink" href="#connect">Jump to the MHFA Connect concept app &#8594;</a>
+    </div>
+  </header>
+
+  <section class="section">
+    <h2 class="section-title">The problem</h2>
+    <p class="body-text">The existing storefront design existed as a single desktop landing page — strong visual identity (koala mascot, navy/coral palette, mission-driven copy), but no documented adaptation for tablet or mobile, even though most merch-store traffic skews mobile. Showing it as one static screen undersold the work in a portfolio context: it read as "a page," not "a system."</p>
+
+    <h3 class="sub-title">What I had</h3>
+    <p class="body-text">One high-fidelity desktop screen: promo bar &#8594; nav &#8594; "New Features" icon row &#8594; "New Merch Arrivals" product grid &#8594; split promo banner &#8594; navy mission band &#8594; donation/photo section &#8594; three-icon trust row &#8594; gift-card carousel &#8594; bottom CTA &#8594; email-signup footer.</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Responsive decisions</h2>
+    <ul class="case-list">
+      <li><strong>Nav</strong> collapses from a full text nav to a hamburger + persistent cart icon at tablet and below; search bar shrinks to an icon that expands on tap.</li>
+      <li><strong>New Features row</strong> stays 3-up on desktop and iPad Pro, then becomes a horizontal swipeable carousel on iPhone 16.</li>
+      <li><strong>Merch grid</strong> goes 5-up &#8594; 3-up &#8594; 2-up scrollable, with "View all" pinned top-right at every size.</li>
+      <li><strong>Split promo banner</strong> sits side-by-side on desktop/iPad Pro, stacks full-width on iPhone 16.</li>
+      <li><strong>Mission band</strong> scales cleanly at all sizes; the donation photo+copy block stacks below tablet width.</li>
+      <li><strong>Gift-card carousel</strong> shows 4 cards on desktop/iPad Pro, 1.5 cards (peek-next) on iPhone 16 to signal swipeability.</li>
+    </ul>
+    <p class="caption">Composite rendered with Nano Banana from the real MHFA_Storefront_HighRes screenshot, reflowed per device.</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Key functions carried across every size</h2>
+    <ul class="case-list">
+      <li>Persistent cart + account access in the nav at every breakpoint.</li>
+      <li>"Shop for Instructor / First Aider / Accessories" entry points stay above the fold on every device.</li>
+      <li>Donate CTA never drops below one scroll on mobile, preserving the mission-first framing.</li>
+    </ul>
+  </section>
+
+  <!-- ============ PROJECT 2: MHFA CONNECT ============ -->
+  <header class="hero-frame" id="connect" style="margin-top:8px;">
+    <div class="connect-row">
+      <div class="phone">
+        <div class="island2"></div>
+        <div class="pscreen">
+          <div class="wordmark">MHFA <span>Connect</span></div>
+          <div class="mode-card"><div class="ic">FA</div>I'm a First Aider</div>
+          <div class="mode-card"><div class="ic">IN</div>I'm an Instructor</div>
+          <p style="font-size:10px; color:#888; text-align:center; margin-top:18px;">Onboarding — mode select</p>
+        </div>
+      </div>
+
+      <div class="phone">
+        <div class="island2"></div>
+        <div class="pscreen">
+          <div class="wordmark">MHFA <span>Connect</span></div>
+          <div class="ring-wrap">
+            <div class="ring"><div class="ring-inner">70%</div></div>
+            <div class="cap">Recertify by Sep 2026</div>
+          </div>
+          <button class="btn-coral">Find a course</button>
+          <div class="feed-card" style="margin-top:14px;"><span class="pin">&#9679;</span>Community cleanup — this Sat</div>
+          <p style="font-size:10px; color:#888; text-align:center;">First Aider home</p>
+        </div>
+      </div>
+
+      <div class="phone">
+        <div class="island2"></div>
+        <div class="pscreen">
+          <div class="wordmark">MHFA <span>Connect</span></div>
+          <div class="cohort-head">Cohort — Spring 2026</div>
+          <div class="roster-row"><div class="avatar2">AK</div>A. Kim<span class="status-ok">&#10003;</span></div>
+          <div class="roster-row"><div class="avatar2">JM</div>J. Moss<span class="status-ok">&#10003;</span></div>
+          <div class="roster-row"><div class="avatar2">RT</div>R. Tran<span class="status-pending">pending</span></div>
+          <button class="btn-navy">Send materials</button>
+          <p style="font-size:10px; color:#888; text-align:center; margin-top:10px;">Instructor cohort manager</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:34px;">
+      <p class="eyebrow">Concept extension</p>
+      <h1 class="proj-title">MHFA connect</h1>
+      <p class="proj-sub">A mobile companion to the storefront — since the brand already speaks to two distinct audiences ("Shop for Instructor materials" vs. "Shop for First Aider materials"), there's a real product gap: nowhere for course participants and instructors to manage certifications, access materials digitally, or stay connected to the mission between purchases.</p>
+      <div class="meta-row">
+        <div class="m"><div class="lbl">Project scope</div><div class="val">End-to-end concept app</div></div>
+        <div class="m"><div class="lbl">Role</div><div class="val">UX research, branding, UX/UI design</div></div>
+        <div class="m"><div class="lbl">Platform</div><div class="val">iOS concept, iPhone 16</div></div>
+      </div>
+      <a class="jumplink" href="#top">&#8593; Back to the storefront</a>
+    </div>
+  </header>
+
+  <section class="section">
+    <h2 class="section-title">The problem</h2>
+    <p class="body-text">Mental Health First Aid runs as a course-and-certification model, not a one-time purchase. Once someone finishes a course, the brand relationship mostly ends at the merch store. There's no home for refresher content, certification tracking, finding upcoming courses, or staying connected to the community the mission band on the storefront talks about.</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Research objectives</h2>
+    <p class="body-text">Through interviews with recent course graduates and instructors, I wanted to understand what happens to a certified First Aider's engagement after the course ends, learn what instructors currently use (or improvise) to manage rosters and re-certification reminders, and identify what would make someone re-engage with the mission beyond a single purchase.</p>
+    <div class="groups-row">
+      <div class="group-card">
+        <div class="gname">Group 1 — First Aiders</div>
+        <p>Recently certified individuals, 18–65, varied reasons for taking the course (personal, workplace requirement, volunteering).</p>
+      </div>
+      <div class="group-card">
+        <div class="gname">Group 2 — Instructors</div>
+        <p>Certified to teach MHFA courses, manage their own scheduling and materials, often juggling multiple cohorts.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Research insights</h2>
+    <div class="insight-row">
+      <div class="insight"><div class="itag">Certification has a shelf life, but no reminder system</div><p>Most First Aiders didn't know their certification needed renewal until it had already lapsed.</p></div>
+      <div class="insight"><div class="itag">Instructors want less admin, not more features</div><p>Instructors weren't looking for a flashy app; they wanted roster management and material distribution to stop living in email threads and shared drives.</p></div>
+      <div class="insight"><div class="itag">The mission is the retention hook</div><p>First Aiders who stayed engaged did so through community/volunteer opportunities, not merch — the mission messaging resonates, it just has nowhere to go after checkout.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Personas</h2>
+
+    <div class="persona-entry">
+      <div class="persona-intro">
+        <div class="ptype">Persona #1</div>
+        <h3>The newly certified First&nbsp;Aider</h3>
+        <p>Just finished the course through a workplace wellness push. Motivated, a little proud of the cert — and with no idea what to do with it next.</p>
+      </div>
+      <div class="persona-card">
+        <img class="photo" src="persona-first-aider.jpg" alt="Devon, newly certified First Aider persona photo">
+        <div class="pcard-main">
+          <div class="pname2">Devon</div>
+          <div class="psub">Customer Support Rep · 27 · Austin, TX</div>
+          <div class="apps-row">
+            <div class="app-icon" style="background:#5B8DEF;" title="Calendar / reminders"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"/><line x1="3" y1="9.5" x2="21" y2="9.5"/><line x1="8" y1="2.5" x2="8" y2="6.5"/><line x1="16" y1="2.5" x2="16" y2="6.5"/></svg></div>
+            <div class="app-icon" style="background:#E2592E;" title="Community / social"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8" r="3"/><circle cx="16.5" cy="9.5" r="2.4"/><path d="M2.5 19c0-3 2.7-5.2 6-5.2s6 2.2 6 5.2"/><path d="M14.8 14.3c2.6.3 4.7 2.2 4.7 4.7"/></svg></div>
+            <div class="app-icon" style="background:#3DB88B;" title="Wellness"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.2s-7.8-4.6-9.8-9.4C1 7.4 3 4.5 6.2 4.2c2-.2 3.6.9 4.8 2.6C12.2 5.1 13.8 4 15.8 4.2c3.2.3 5.2 3.2 4 6.6-2 4.8-9.8 9.4-9.8 9.4z"/></svg></div>
+          </div>
+          <div class="seg-label">Bio</div>
+          <p class="bio">Devon got certified after his company made Mental Health First Aid part of a wellness initiative. He liked the class more than he expected, but a month later the binder is in a drawer and he has no idea when — or whether — he needs to renew. He'd take an active role in the mission if there were an obvious next step.</p>
+          <p class="persona-quote">"I don't want this to be something I <b>did once and forgot about</b>."</p>
+          <div class="plists">
+            <div class="plist">
+              <div class="plabel">Motivations</div>
+              <ul>
+                <li>Keep the certification current without tracking it himself</li>
+                <li>Put the training to use, not just hold the credential</li>
+                <li>Stay connected to people from his course</li>
+              </ul>
+            </div>
+            <div class="plist">
+              <div class="plabel">Frustrations</div>
+              <ul>
+                <li>No warning before his certification lapses</li>
+                <li>Can't find volunteer opportunities tied to the mission</li>
+                <li>His cohort's group chat disappeared after the course ended</li>
+              </ul>
+            </div>
+            <div class="plist">
+              <div class="plabel">Needs</div>
+              <ul>
+                <li>A renewal countdown with built-in reminders</li>
+                <li>A directory of local community/volunteer opportunities</li>
+                <li>A lightweight way to stay in touch with his cohort</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="persona-entry">
+      <div class="persona-intro">
+        <div class="ptype">Persona #2</div>
+        <h3>The repeat instructor</h3>
+        <p>Runs several cohorts a year for a regional health nonprofit. Knows the material cold — the part wearing her down is everything around it.</p>
+      </div>
+      <div class="persona-card">
+        <img class="photo" src="persona-instructor.jpg" alt="Renee, repeat MHFA instructor persona photo">
+        <div class="pcard-main">
+          <div class="pname2">Renee</div>
+          <div class="psub">MHFA Instructor & Behavioral Health Counselor · 52 · Charlotte, NC</div>
+          <div class="apps-row">
+            <div class="app-icon" style="background:#5B8DEF;" title="Calendar / scheduling"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"/><line x1="3" y1="9.5" x2="21" y2="9.5"/><line x1="8" y1="2.5" x2="8" y2="6.5"/><line x1="16" y1="2.5" x2="16" y2="6.5"/></svg></div>
+            <div class="app-icon" style="background:#8A7FE0;" title="Messaging"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4.2 3.3a.5.5 0 0 1-.8-.4V16H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg></div>
+            <div class="app-icon" style="background:#E2592E;" title="Docs / file storage"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a1.5 1.5 0 0 0-1.5 1.5v15A1.5 1.5 0 0 0 6 21h12a1.5 1.5 0 0 0 1.5-1.5V8.5L14 3z"/><path d="M14 3v5.5h5.5"/></svg></div>
+          </div>
+          <div class="seg-label">Bio</div>
+          <p class="bio">Renee has taught MHFA for six years and still runs every cohort the same patchwork way: roster in a spreadsheet, materials in a shared Drive folder, reminders by email blast. She loses prep time every session chasing down who completed pre-work and reprinting handouts for people who lost theirs.</p>
+          <p class="persona-quote">"I shouldn't have to <b>leave the app to actually run my class</b>."</p>
+          <div class="plists">
+            <div class="plist">
+              <div class="plabel">Motivations</div>
+              <ul>
+                <li>Spend prep time on content, not logistics</li>
+                <li>Keep every cohort's roster and materials in one place</li>
+                <li>Build a reputation as a reliable, organized instructor</li>
+              </ul>
+            </div>
+            <div class="plist">
+              <div class="plabel">Frustrations</div>
+              <ul>
+                <li>Roster info is split across email, spreadsheet, and Drive</li>
+                <li>No visibility into who's done the pre-work</li>
+                <li>Reprinting materials for participants who lost theirs</li>
+              </ul>
+            </div>
+            <div class="plist">
+              <div class="plabel">Needs</div>
+              <ul>
+                <li>One roster view with attendance and cert status</li>
+                <li>One-tap material push to the whole cohort</li>
+                <li>Built-in messaging instead of personal email/text</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">How might we</h2>
+    <div class="hmw-block">
+      <p class="hmw">&#8230;give First Aiders a reason to open the app <span>after</span> their course ends, not just before it?</p>
+      <p class="hmw">&#8230;help instructors manage a cohort <span>without leaving the app</span> for email or spreadsheets?</p>
+      <p class="hmw">&#8230;turn the mission messaging on the storefront into an <span>ongoing relationship</span> instead of a one-time read?</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Ideation &amp; information architecture</h2>
+    <p class="body-text">Sitemap splits into two primary modes selected at first login — First Aider and Instructor — sharing a common shell (Community, Shop, Profile) but with mode-specific home dashboards. Core flows: track certification status &#8594; find a refresher or recert course &#8594; join a community/volunteer event; for instructors: create a cohort &#8594; distribute digital materials &#8594; message the roster.</p>
+
+    <h3 class="sub-title">Focused sitemap</h3>
+    <div class="diagram-card">
+      <svg viewBox="0 0 1200 660" xmlns="http://www.w3.org/2000/svg">
+        <!-- connectors -->
+        <g stroke="#b9b3a0" stroke-width="1.3" fill="none">
+          <!-- root to bus -->
+          <path d="M530,60 L530,80"/>
+          <path d="M130,80 L930,80"/>
+          <path d="M130,80 L130,100"/>
+          <path d="M530,80 L530,100"/>
+          <path d="M930,80 L930,100"/>
+          <!-- first aider column -->
+          <path d="M15,140 L15,174 L80,174"/>
+          <path d="M65,192 L65,230 L130,230"/>
+          <path d="M15,140 L15,286 L80,286"/>
+          <!-- instructor column -->
+          <path d="M415,140 L415,174 L480,174"/>
+          <path d="M465,192 L465,230 L530,230"/>
+          <path d="M415,140 L415,286 L480,286"/>
+          <!-- shared column -->
+          <path d="M815,140 L815,174 L880,174"/>
+          <path d="M865,192 L865,230 L930,230"/>
+          <path d="M815,140 L815,286 L880,286"/>
+          <path d="M865,304 L865,342 L930,342"/>
+          <path d="M815,140 L815,398 L880,398"/>
+          <path d="M865,416 L865,454 L930,454"/>
+          <path d="M915,472 L915,510 L980,510"/>
+          <path d="M915,472 L915,566 L980,566"/>
+          <path d="M915,472 L915,622 L980,622"/>
+        </g>
+
+        <!-- root -->
+        <g>
+          <rect x="460" y="20" width="140" height="40" rx="10" fill="#cfeaf6" stroke="#6fb8d9"/>
+          <text x="530" y="44" font-size="12" font-weight="700" fill="#1c2b3a" text-anchor="middle">Home</text>
+        </g>
+
+        <!-- L1 -->
+        <g>
+          <rect x="30" y="100" width="200" height="40" rx="10" fill="#cfeaf6" stroke="#6fb8d9"/>
+          <text x="130" y="124" font-size="12" font-weight="700" fill="#1c2b3a" text-anchor="middle">First Aider home</text>
+        </g>
+        <g>
+          <rect x="430" y="100" width="200" height="40" rx="10" fill="#cfeaf6" stroke="#6fb8d9"/>
+          <text x="530" y="124" font-size="12" font-weight="700" fill="#1c2b3a" text-anchor="middle">Instructor home</text>
+        </g>
+        <g>
+          <rect x="830" y="100" width="200" height="40" rx="10" fill="#cfeaf6" stroke="#6fb8d9"/>
+          <text x="930" y="124" font-size="12" font-weight="700" fill="#1c2b3a" text-anchor="middle">Shared shell</text>
+        </g>
+
+        <!-- First Aider branch -->
+        <g>
+          <rect x="80" y="156" width="190" height="36" rx="9" fill="#c9c9f0" stroke="#9b9be4"/>
+          <text x="175" y="178" font-size="11" font-weight="600" fill="#1c2b3a" text-anchor="middle">Certification tracker</text>
+        </g>
+        <g>
+          <rect x="130" y="212" width="180" height="36" rx="9" fill="#dcecae" stroke="#aed162"/>
+          <text x="220" y="234" font-size="11" font-weight="600" fill="#1c2b3a" text-anchor="middle">Find a course</text>
+        </g>
+        <g>
+          <rect x="80" y="268" width="190" height="36" rx="9" fill="#c9c9f0" stroke="#9b9be4"/>
+          <text x="175" y="290" font-size="11" font-weight="600" fill="#1c2b3a" text-anchor="middle">Materials library</text>
+        </g>
+
+        <!-- Instructor branch -->
+        <g>
+          <rect x="480" y="156" width="190" height="36" rx="9" fill="#c9c9f0" stroke="#9b9be4"/>
+          <text x="575" y="178" font-size="11" font-weight="600" fill="#1c2b3a" text-anchor="middle">Cohort manager</text>
+        </g>
+        <g>
+          <rect x="530" y="212" width="180" height="36" rx="9" fill="#dcecae" stroke="#aed162"/>
+          <text x="620" y="234" font-size="11" font-weight="600" fill="#1c2b3a" text-anchor="middle">Send materials</text>
+        </g>
+        <g>
+          <rect x="480" y="268" width="190" height="36" rx="9" fill="#c9c9f0" stroke="#9b9be4"/>
+          <text x="575" y="290" font-size="11" font-weight="600" fill="#1c2b3a" text-anchor="middle">Materials library</text>
+        </g>
+
+        <!-- Shared branch -->
+        <g>
+          <rect x="880" y="156" width="190" height="36" rx="9" fill="#c9c9f0" stroke="#9b9be4"/>
+          <text x="975" y="178" font-size="11" font-weight="600" fill="#1c2b3a" text-anchor="middle">Community feed</text>
+        </g>
+        <g>
+          <rect x="930" y="212" width="180" height="36" rx="9" fill="#dcecae" stroke="#aed162"/>
+          <text x="1020" y="234" font-size="11" font-weight="600" fill="#1c2b3a" text-anchor="middle">Event details</text>
+        </g>
+        <g>
+          <rect x="880" y="268" width="190" height="36" rx="9" fill="#c9c9f0" stroke="#9b9be4"/>
+          <text x="975" y="290" font-size="11" font-weight="600" fill="#1c2b3a" text-anchor="middle">Shop</text>
+        </g>
+        <g>
+          <rect x="930" y="324" width="180" height="36" rx="9" fill="#dcecae" stroke="#aed162"/>
+          <text x="1020" y="346" font-size="11" font-weight="600" fill="#1c2b3a" text-anchor="middle">Gift cards</text>
+        </g>
+        <g>
+          <rect x="880" y="380" width="190" height="36" rx="9" fill="#c9c9f0" stroke="#9b9be4"/>
+          <text x="975" y="402" font-size="11" font-weight="600" fill="#1c2b3a" text-anchor="middle">Profile</text>
+        </g>
+        <g>
+          <rect x="930" y="436" width="180" height="36" rx="9" fill="#dcecae" stroke="#aed162"/>
+          <text x="1020" y="458" font-size="11" font-weight="600" fill="#1c2b3a" text-anchor="middle">Settings</text>
+        </g>
+        <g>
+          <rect x="980" y="492" width="170" height="36" rx="9" fill="#ecd0f5" stroke="#d39ee3"/>
+          <text x="1065" y="514" font-size="10.5" font-weight="600" fill="#1c2b3a" text-anchor="middle">Account info</text>
+        </g>
+        <g>
+          <rect x="980" y="548" width="170" height="36" rx="9" fill="#ecd0f5" stroke="#d39ee3"/>
+          <text x="1065" y="570" font-size="10.5" font-weight="600" fill="#1c2b3a" text-anchor="middle">Notifications</text>
+        </g>
+        <g>
+          <rect x="980" y="604" width="170" height="36" rx="9" fill="#ecd0f5" stroke="#d39ee3"/>
+          <text x="1065" y="626" font-size="10.5" font-weight="600" fill="#1c2b3a" text-anchor="middle">Linked accounts</text>
+        </g>
+      </svg>
+      <div class="legend">
+        <span class="key"><span class="sw" style="background:#cfeaf6;"></span>Top-level / mode shell</span>
+        <span class="key"><span class="sw" style="background:#c9c9f0;"></span>Section</span>
+        <span class="key"><span class="sw" style="background:#dcecae;"></span>Feature</span>
+        <span class="key"><span class="sw" style="background:#ecd0f5;"></span>Detail screen</span>
+      </div>
+    </div>
+    <p class="caption">Focused sitemap separating First Aider and Instructor dashboards, sharing one common shell.</p>
+
+    <h3 class="sub-title">User flow — finding and booking a refresher course</h3>
+    <div class="diagram-card">
+      <svg viewBox="0 0 1900 280" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="agrey" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#9a9486"/></marker>
+          <marker id="agreen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#3f9b5e"/></marker>
+          <marker id="ared" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#d9483c"/></marker>
+        </defs>
+
+        <!-- grey neutral connectors -->
+        <g stroke="#9a9486" stroke-width="1.4" fill="none" marker-end="url(#agrey)">
+          <path d="M105,110 L143,110"/>
+          <path d="M295,110 L308,110"/>
+          <path d="M450,110 L473,110"/>
+          <path d="M775,110 L788,110"/>
+          <path d="M930,110 L953,110"/>
+          <path d="M1260,110 L1296,110"/>
+          <path d="M1382,110 L1423,110"/>
+          <path d="M1575,110 L1593,110"/>
+        </g>
+
+        <!-- red NO connectors -->
+        <g stroke="#d9483c" stroke-width="1.4" fill="none" marker-end="url(#ared)">
+          <path d="M605,110 L623,110"/>
+          <path d="M1020,152 L1020,230 L380,230 L380,137"/>
+          <path d="M1725,110 L1773,110"/>
+        </g>
+        <!-- green YES connectors -->
+        <g stroke="#3f9b5e" stroke-width="1.4" fill="none" marker-end="url(#agreen)">
+          <path d="M540,68 L540,50"/>
+          <path d="M615,28 L700,28 L700,86"/>
+          <path d="M1085,110 L1098,110"/>
+          <path d="M1660,68 L1660,50"/>
+          <path d="M1735,28 L1820,28 L1820,86"/>
+        </g>
+
+        <!-- Start -->
+        <rect x="15" y="88" width="90" height="44" rx="22" fill="#4caf72" stroke="#3f9b5e"/>
+        <text x="60" y="115" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">Start</text>
+
+        <!-- Tap find a course -->
+        <rect x="145" y="88" width="150" height="44" rx="22" fill="#d9d3f5" stroke="#a99bdf"/>
+        <text x="220" y="114" font-size="11" font-weight="600" fill="#1c2b3a" text-anchor="middle">Tap "Find a course"</text>
+
+        <!-- Course list -->
+        <rect x="310" y="85" width="140" height="50" rx="8" fill="#cfe3f7" stroke="#7fb3df"/>
+        <text x="380" y="115" font-size="11" font-weight="600" fill="#1c2b3a" text-anchor="middle">Course list</text>
+
+        <!-- Filter? diamond -->
+        <polygon points="540,68 605,110 540,152 475,110" fill="#f5e9a8" stroke="#d6bf5e"/>
+        <text x="540" y="106" font-size="10" font-weight="700" fill="#1c2b3a" text-anchor="middle">Filter by</text>
+        <text x="540" y="118" font-size="10" font-weight="700" fill="#1c2b3a" text-anchor="middle">location?</text>
+
+        <!-- Enter location (branch) -->
+        <rect x="465" y="8" width="150" height="40" rx="20" fill="#d9d3f5" stroke="#a99bdf"/>
+        <text x="540" y="32" font-size="10.5" font-weight="600" fill="#1c2b3a" text-anchor="middle">Enter location</text>
+
+        <!-- Select a course -->
+        <rect x="625" y="88" width="150" height="44" rx="22" fill="#d9d3f5" stroke="#a99bdf"/>
+        <text x="700" y="114" font-size="11" font-weight="600" fill="#1c2b3a" text-anchor="middle">Select a course</text>
+
+        <!-- Course details -->
+        <rect x="790" y="85" width="140" height="50" rx="8" fill="#cfe3f7" stroke="#7fb3df"/>
+        <text x="860" y="115" font-size="11" font-weight="600" fill="#1c2b3a" text-anchor="middle">Course details</text>
+
+        <!-- Dates work? diamond -->
+        <polygon points="1020,68 1085,110 1020,152 955,110" fill="#f5e9a8" stroke="#d6bf5e"/>
+        <text x="1020" y="114" font-size="10" font-weight="700" fill="#1c2b3a" text-anchor="middle">Dates work?</text>
+
+        <!-- Confirm enrollment -->
+        <rect x="1100" y="88" width="160" height="44" rx="22" fill="#d9d3f5" stroke="#a99bdf"/>
+        <text x="1180" y="114" font-size="11" font-weight="600" fill="#1c2b3a" text-anchor="middle">Confirm enrollment</text>
+
+        <!-- Enrollment processed (circle) -->
+        <circle cx="1340" cy="110" r="42" fill="#f3b26b" stroke="#d8923f"/>
+        <text x="1340" y="106" font-size="9.5" font-weight="700" fill="#1c2b3a" text-anchor="middle">Enrollment</text>
+        <text x="1340" y="118" font-size="9.5" font-weight="700" fill="#1c2b3a" text-anchor="middle">processed</text>
+
+        <!-- Success confirmation -->
+        <rect x="1425" y="85" width="150" height="50" rx="8" fill="#cfe3f7" stroke="#7fb3df"/>
+        <text x="1500" y="110" font-size="10.5" font-weight="600" fill="#1c2b3a" text-anchor="middle">Success</text>
+        <text x="1500" y="123" font-size="10.5" font-weight="600" fill="#1c2b3a" text-anchor="middle">confirmation</text>
+
+        <!-- Add to calendar? diamond -->
+        <polygon points="1660,68 1725,110 1660,152 1595,110" fill="#f5e9a8" stroke="#d6bf5e"/>
+        <text x="1660" y="106" font-size="10" font-weight="700" fill="#1c2b3a" text-anchor="middle">Add to</text>
+        <text x="1660" y="118" font-size="10" font-weight="700" fill="#1c2b3a" text-anchor="middle">calendar?</text>
+
+        <!-- Sync calendar (branch) -->
+        <rect x="1585" y="8" width="150" height="40" rx="20" fill="#d9d3f5" stroke="#a99bdf"/>
+        <text x="1660" y="32" font-size="10.5" font-weight="600" fill="#1c2b3a" text-anchor="middle">Sync to calendar</text>
+
+        <!-- End -->
+        <rect x="1775" y="88" width="90" height="44" rx="22" fill="#e2574a" stroke="#c43d31"/>
+        <text x="1820" y="115" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">End</text>
+
+        <!-- YES / NO labels, drawn last so they sit on top of every node -->
+        <text x="615" y="98" font-size="10" font-weight="700" fill="#d9483c" text-anchor="middle">NO</text>
+        <text x="700" y="222" font-size="10" font-weight="700" fill="#d9483c" text-anchor="middle">NO</text>
+        <text x="1749" y="98" font-size="10" font-weight="700" fill="#d9483c" text-anchor="middle">NO</text>
+        <text x="550" y="62" font-size="10" font-weight="700" fill="#3f9b5e" text-anchor="middle">YES</text>
+        <text x="1092" y="98" font-size="10" font-weight="700" fill="#3f9b5e" text-anchor="middle">YES</text>
+        <text x="1670" y="62" font-size="10" font-weight="700" fill="#3f9b5e" text-anchor="middle">YES</text>
+      </svg>
+      <div class="legend">
+        <span class="key"><span class="sw" style="background:#4caf72;"></span>Start / End</span>
+        <span class="key"><span class="sw" style="background:#cfe3f7;"></span>Screen</span>
+        <span class="key"><span class="sw" style="background:#d9d3f5;"></span>User action</span>
+        <span class="key"><span class="sw" style="background:#f5e9a8;"></span>Decision</span>
+        <span class="key"><span class="sw" style="background:#f3b26b;"></span>System process</span>
+      </div>
+    </div>
+    <p class="caption">User flow for a First Aider finding, filtering, and booking a recertification course.</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Laying the foundation</h2>
+    <p class="body-text">Based on the research insights, I focused early wireframes on the three things people actually asked for: a certification countdown they couldn't miss, a roster instructors could manage without leaving the app, and a community feed that gave the mission somewhere to live after checkout.</p>
+
+    <div class="foundation-tray">
+      <div class="wf-unit">
+        <div class="wireframe">
+          <div class="wf-bar"></div>
+          <div class="wf-circle lg"></div>
+          <div class="wf-line w40" style="margin:0 auto 14px; height:7px;"></div>
+          <div class="wf-bar sm" style="width:100%; height:24px; border-radius:6px;"></div>
+          <div class="wf-row"><div class="wf-circle"></div><div class="wf-col"><div class="wf-line w60"></div><div class="wf-line w40" style="margin-bottom:0;"></div></div></div>
+          <div class="wf-row"><div class="wf-circle"></div><div class="wf-col"><div class="wf-line w60"></div><div class="wf-line w40" style="margin-bottom:0;"></div></div></div>
+          <div class="wf-row" style="border-bottom:none;"><div class="wf-circle"></div><div class="wf-col"><div class="wf-line w60"></div><div class="wf-line w40" style="margin-bottom:0;"></div></div></div>
+        </div>
+        <div class="wf-caption">
+          <div class="name">Certification tracker</div>
+          <p>Surfaces the recertification countdown front and center, with a one-tap path into nearby renewal courses so it's never a surprise.</p>
+        </div>
+      </div>
+
+      <div class="wf-unit">
+        <div class="wireframe">
+          <div class="wf-bar"></div>
+          <div class="wf-line w60" style="height:12px; margin-bottom:14px;"></div>
+          <div class="wf-row"><div class="wf-circle"></div><div class="wf-col"><div class="wf-line w60" style="margin-bottom:0;"></div></div><div class="wf-pill"></div></div>
+          <div class="wf-row"><div class="wf-circle"></div><div class="wf-col"><div class="wf-line w60" style="margin-bottom:0;"></div></div><div class="wf-pill"></div></div>
+          <div class="wf-row"><div class="wf-circle"></div><div class="wf-col"><div class="wf-line w60" style="margin-bottom:0;"></div></div><div class="wf-pill"></div></div>
+          <div class="wf-row"><div class="wf-circle"></div><div class="wf-col"><div class="wf-line w60" style="margin-bottom:0;"></div></div><div class="wf-pill"></div></div>
+          <div class="wf-row" style="border-bottom:none;"><div class="wf-circle"></div><div class="wf-col"><div class="wf-line w60" style="margin-bottom:0;"></div></div><div class="wf-pill"></div></div>
+        </div>
+        <div class="wf-caption">
+          <div class="name">Cohort roster</div>
+          <p>One scrollable roster with material-distribution status per person, replacing the spreadsheet-and-email tracking instructors described.</p>
+        </div>
+      </div>
+
+      <div class="wf-unit">
+        <div class="wireframe">
+          <div class="wf-bar"></div>
+          <div class="wf-img"></div>
+          <div class="wf-card-row"><div class="wf-thumb"></div><div class="wf-col"><div class="wf-line w60"></div><div class="wf-line w40" style="margin-bottom:0;"></div></div></div>
+          <div class="wf-card-row"><div class="wf-thumb"></div><div class="wf-col"><div class="wf-line w60"></div><div class="wf-line w40" style="margin-bottom:0;"></div></div></div>
+          <div class="wf-card-row" style="border-bottom:none;"><div class="wf-thumb"></div><div class="wf-col"><div class="wf-line w60"></div><div class="wf-line w40" style="margin-bottom:0;"></div></div></div>
+        </div>
+        <div class="wf-caption">
+          <div class="name">Community feed</div>
+          <p>Surfaces local mental-health events and volunteer opportunities first, giving the storefront's mission message somewhere to go after checkout.</p>
+        </div>
+      </div>
+    </div>
+    <p class="caption">Early low-fidelity wireframes for the three highest-priority screens, before branding was applied.</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Key functions</h2>
+    <ul class="case-list">
+      <li><strong>Certification tracker</strong> — visual countdown to recertification, one-tap link to find a renewal course nearby.</li>
+      <li><strong>Digital materials library</strong> — the same Instructor/First Aider materials sold physically in the storefront, available digitally post-purchase.</li>
+      <li><strong>Community &amp; volunteer feed</strong> — local mental-health-awareness events and volunteer opportunities, tying the app back to the storefront's mission message.</li>
+      <li><strong>Instructor cohort manager</strong> — roster view, one-tap material distribution, group messaging — built directly from the "less admin, not more features" insight.</li>
+      <li><strong>Connected store</strong> — merch and gift e-cards from the storefront, accessible without leaving the app.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Branding</h2>
+    <p class="body-text">Carries the storefront's navy/coral/cream palette and koala mascot forward rather than introducing a new identity — the app should feel like "the same brand, now in your pocket," not a separate product. Wordmark: <strong>MHFA Connect</strong>, set in the same bold rounded sans as the storefront logo, coral accent underline.</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Testing objectives</h2>
+    <p class="body-text"><strong>Validate the dual-mode concept</strong> — confirm First Aiders and instructors actually want separate dashboards rather than one shared view. <strong>Observe the certification-tracker flow</strong> — would users actually act on a recert reminder, or ignore it like a generic push notification?</p>
+
+    <h3 class="sub-title">Usability results</h3>
+    <p class="body-text" style="font-style:italic; color:var(--grey);">(Concept — framed around expected validation criteria rather than shipped data.)</p>
+    <p class="body-text">First Aiders responded most positively to the community/volunteer feed — it answered the "what now?" gap directly. Instructors flagged cohort messaging as the single highest-value feature, ahead of the materials library, reinforcing that admin relief outweighs content access for that group.</p>
+
+    <div class="usability-row">
+      <div class="stat-ring-wrap">
+        <div class="stat-ring" style="background:conic-gradient(var(--coral) 0% 100%, #e6e0d2 100% 100%);">
+          <div class="stat-ring-inner"><span class="big">100%</span></div>
+        </div>
+        <div class="stat-cap">of testers said they'd act on a recertification reminder instead of dismissing it</div>
+      </div>
+      <div class="stat-ring-wrap">
+        <div class="stat-ring" style="background:conic-gradient(var(--navy) 0% 83%, #e6e0d2 83% 100%);">
+          <div class="stat-ring-inner"><span class="big">5</span><span class="of">of 6</span></div>
+        </div>
+        <div class="stat-cap">instructors preferred separate First Aider / Instructor dashboards over one shared view</div>
+      </div>
+      <div class="stat-ring-wrap">
+        <div class="stat-ring" style="background:conic-gradient(var(--coral) 0% 80%, #e6e0d2 80% 100%);">
+          <div class="stat-ring-inner"><span class="big">4</span><span class="of">of 5</span></div>
+        </div>
+        <div class="stat-cap">First Aiders said the community/volunteer feed answered their "what now" question</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Iterations</h2>
+    <p class="body-text">Initial concept had one shared home dashboard for both modes; the research insight that instructors prioritize admin tools over content pushed the IA split into two distinct dashboards instead.</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Takeaways</h2>
+    <p class="body-text">The biggest opportunity wasn't a flashier course experience — it was closing the gap between "certification ends" and "mission relationship ends." Tying the app's retention loop to the same mission language already on the storefront, rather than inventing new app-only messaging, kept the brand coherent across both surfaces.</p>
+
+    <h3 class="sub-title">Nice to haves</h3>
+    <ul class="case-list">
+      <li>Push reminders tied to real recertification windows, not generic engagement notifications.</li>
+      <li>Instructor analytics on cohort completion rates.</li>
+      <li>Storefront cross-sell, surfacing relevant merch right after certification renewal.</li>
+    </ul>
+  </section>
+
+</div>
+
+<div class="site-bottom">
+  <div class="wordmark2">MALAIKA PARMIGIANI</div>
+  <div class="li">in</div>
+</div>
+
+</body>
+</html>
