@@ -144,6 +144,14 @@
   .ring-inner{width:64px; height:64px; border-radius:50%; background:var(--cream); display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:bold; color:var(--navy);}
   .ring-wrap .cap{font-size:11px; color:#666; text-align:center;}
 
+  /* ===== interactive prototype link-out card ===== */
+  .proto-card{background:linear-gradient(135deg, var(--navy), #234a73); border-radius:18px; padding:44px 36px; margin:24px 0 6px; text-align:center; color:#fff;}
+  .proto-card h3{font-family:'Inter Tight','Inter',Arial,sans-serif; font-size:24px; font-weight:800; margin:0 0 12px;}
+  .proto-card p{font-size:14px; line-height:1.65; color:#dbe3ec; max-width:480px; margin:0 auto 24px;}
+  .proto-btn{display:inline-flex; align-items:center; gap:8px; background:var(--coral); color:#fff; font-weight:800; font-size:13px; letter-spacing:0.3px; text-decoration:none; padding:13px 28px; border-radius:30px; transition:background 0.15s ease;}
+  .proto-btn:hover{background:#c94a24;}
+  .proto-btn svg{width:14px; height:14px; flex-shrink:0;}
+
   /* ===== usability results stat rings ===== */
   .usability-row{display:flex; gap:30px; flex-wrap:wrap; margin:24px 0 6px;}
   .stat-ring-wrap{width:170px; display:flex; flex-direction:column; align-items:center; text-align:center;}
@@ -787,6 +795,17 @@
       <li>Instructor analytics on cohort completion rates.</li>
       <li>Storefront cross-sell, surfacing relevant merch right after certification renewal.</li>
     </ul>
+  </section>
+
+  <section class="section">
+    <div class="proto-card">
+      <h3>Try the interactive prototype</h3>
+      <p>Explore the full MHFA Connect concept — certification tracker, cohort manager, and community feed — built out as a clickable Figma Make prototype.</p>
+      <a class="proto-btn" href="https://www.figma.com/make/UWWoaIwp4ZEUDsozykh6eA/First-Aid-Training-App-Concept?fullscreen=1&amp;t=XI0g1KHuApaN3fhX-1&amp;code-node-id=0-9" target="_blank" rel="noopener noreferrer">
+        Open prototype
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+      </a>
+    </div>
   </section>
 
 </div>
