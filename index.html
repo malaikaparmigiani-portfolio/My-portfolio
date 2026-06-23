@@ -195,17 +195,17 @@
   <!-- ============ PROJECT 1: MHFA STOREFRONT ============ -->
   <header class="hero-frame" id="top">
     <div class="device-row">
-      <img src="Portfolio_Gemini 3.1 Flash (Nano Banana 2)_2026-06-22_01-32-16.png" alt="MHFA storefront shown on iPhone 16, iPad Pro 13 inch, and desktop" style="max-width:100%; height:auto; display:block; margin:0 auto;">
+      <img src="Portfolio_Gemini 3.1 Flash (Nano Banana 2)_2026-06-22_01-32-16.png" alt="MHFA App instructor Home, Cohorts, and Materials screens on iPhone 16" style="max-width:100%; height:auto; display:block; margin:0 auto;">
     </div>
 
     <div style="margin-top:34px;">
-      <p class="eyebrow">Case study 01</p>
-      <h1 class="proj-title">MHFA storefront</h1>
-      <p class="proj-sub">A merch storefront for Mental Health First Aid, rebuilt to prove out as a genuinely responsive system — one shared layout reflowing across desktop, iPad Pro, and iPhone 16 — and extended into a concept companion app.</p>
+      <p class="eyebrow">Case study 02</p>
+      <h1 class="proj-title">MHFA App</h1>
+      <p class="proj-sub">A high-fidelity mobile concept for MHFA instructors, built around the one moment that matters most: walking into a live session and knowing instantly who's there, what's been distributed, and what's still missing.</p>
       <div class="meta-row">
-        <div class="m"><div class="lbl">Project scope</div><div class="val">Responsive web system</div></div>
-        <div class="m"><div class="lbl">Role</div><div class="val">UX/UI design, responsive systems</div></div>
-        <div class="m"><div class="lbl">Platforms</div><div class="val">Desktop, iPad Pro, iPhone 16</div></div>
+        <div class="m"><div class="lbl">Project scope</div><div class="val">Mobile app concept</div></div>
+        <div class="m"><div class="lbl">Role</div><div class="val">UX/UI design, mobile concept</div></div>
+        <div class="m"><div class="lbl">Platforms</div><div class="val">iPhone 16</div></div>
       </div>
       <a class="jumplink" href="#connect">Jump to the MHFA Connect concept app &#8594;</a>
     </div>
@@ -213,31 +213,29 @@
 
   <section class="section">
     <h2 class="section-title">The problem</h2>
-    <p class="body-text">The existing storefront design existed as a single desktop landing page — strong visual identity (koala mascot, navy/coral palette, mission-driven copy), but no documented adaptation for tablet or mobile, even though most merch-store traffic skews mobile. Showing it as one static screen undersold the work in a portfolio context: it read as "a page," not "a system."</p>
+    <p class="body-text">Instructors run live Mental Health First Aid sessions juggling a paper sign-in sheet, a stack of photocopied handouts, and a phone full of texts asking if they're "in the right room." None of that lives in one place, and none of it is visible at a glance the moment class starts.</p>
 
-    <h3 class="sub-title">What I had</h3>
-    <p class="body-text">One high-fidelity desktop screen: promo bar &#8594; nav &#8594; "New Features" icon row &#8594; "New Merch Arrivals" product grid &#8594; split promo banner &#8594; navy mission band &#8594; donation/photo section &#8594; three-icon trust row &#8594; gift-card carousel &#8594; bottom CTA &#8594; email-signup footer.</p>
+    <h3 class="sub-title">What instructors were working with</h3>
+    <p class="body-text">A printed roster clipped to a binder, materials photocopied and handed out at the door, and attendance tallied after the fact by counting paper sign-ins — with no record of who'd actually completed pre-work before showing up.</p>
   </section>
 
   <section class="section">
-    <h2 class="section-title">Responsive decisions</h2>
+    <h2 class="section-title">Designing the session-day flow</h2>
     <ul class="case-list">
-      <li><strong>Nav</strong> collapses from a full text nav to a hamburger + persistent cart icon at tablet and below; search bar shrinks to an icon that expands on tap.</li>
-      <li><strong>New Features row</strong> stays 3-up on desktop and iPad Pro, then becomes a horizontal swipeable carousel on iPhone 16.</li>
-      <li><strong>Merch grid</strong> goes 5-up &#8594; 3-up &#8594; 2-up scrollable, with "View all" pinned top-right at every size.</li>
-      <li><strong>Split promo banner</strong> sits side-by-side on desktop/iPad Pro, stacks full-width on iPhone 16.</li>
-      <li><strong>Mission band</strong> scales cleanly at all sizes; the donation photo+copy block stacks below tablet width.</li>
-      <li><strong>Gift-card carousel</strong> shows 4 cards on desktop/iPad Pro, 1.5 cards (peek-next) on iPhone 16 to signal swipeability.</li>
+      <li><strong>Home</strong> opens straight to today's live session — room, time, who's checked in so far — with the two things an instructor reaches for first, attendance and materials, surfaced as one-tap quick actions instead of buried in a menu.</li>
+      <li><strong>Cohorts</strong> shows roster status at a glance via Checked In / Pending / Late chips, a search bar to jump to one student mid-class, and a single Mark All Present action for the common case.</li>
+      <li><strong>Materials</strong> lists every file for the session with a download-progress bar, so an instructor can confirm everything's available offline before walking into a room with bad signal.</li>
+      <li><strong>Role toggle</strong> on Home switches the same app frame between Instructor and First Aider views, so one concept serves both sides of a session.</li>
     </ul>
-    <p class="caption">Composite rendered with Nano Banana from the real MHFA_Storefront_HighRes screenshot, reflowed per device.</p>
+    <p class="caption">Composite rendered with Nano Banana from high-fidelity Figma screens, framed in iPhone 16 mockups.</p>
   </section>
 
   <section class="section">
-    <h2 class="section-title">Key functions carried across every size</h2>
+    <h2 class="section-title">Key functions</h2>
     <ul class="case-list">
-      <li>Persistent cart + account access in the nav at every breakpoint.</li>
-      <li>"Shop for Instructor / First Aider / Accessories" entry points stay above the fold on every device.</li>
-      <li>Donate CTA never drops below one scroll on mobile, preserving the mission-first framing.</li>
+      <li>Live attendance status visible the moment a session opens — no extra taps to find out who's there.</li>
+      <li>One-tap "Mark All Present" and "Download All Materials" cover the two most repetitive instructor actions.</li>
+      <li>Mission messaging ("Every purchase supports mental health education") stays visible on Home, tying the app back to the storefront's donation language without interrupting the workflow.</li>
     </ul>
   </section>
 
